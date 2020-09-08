@@ -1,0 +1,22 @@
+{
+    "author": "Brandon Scott <brandongregoryscott@gmail.com>",
+    "bin": {
+        "and-cli": "plugin-cli.js"
+    },
+    "dependencies": {
+        "and-cli": "file:///~/acc/fork/AndcultureCode.Cli",
+        "commander": "6.0.0",
+        "shelljs": "0.8.4"
+    },
+    "description": "Sandbox project to showcase extending functionality of and-cli",
+    "devDependencies": {
+        "prettier": "1.19.1"
+    },
+    "license": "ISC",
+    "main": "plugin-cli.js",
+    "name": "and-cli-plugin-example",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "0.0.1"
+}
