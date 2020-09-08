@@ -272,3 +272,26 @@ commandRegistry.registerCommand(
     }
 );
 ```
+
+-   Running without being in the current project directory (aliasing/global installation)
+
+Currently, the `and-cli install` command is hard-coded to create an alias for `and-cli` only, so a project extending its behavior will not benefit from this command. As adoption of the `and-cli` increases, an update to that command to dynamically determine the CLI/bin name would be nice. A current workaround is to install your CLI globally.
+
+1. Install your custom CLI as a global package, ie:
+
+```SH
+npm install -g .
+```
+
+You can then change to another directory and run it directly by the bin name (defined in package.json):
+
+```JSON
+    "bin": {
+        "plugin-cli": "plugin-cli.js"
+    },
+```
+
+```SH
+cd ~/some/other/directory
+plugin-cli dotnet -cRb
+```

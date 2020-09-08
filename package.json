@@ -1,7 +1,7 @@
 {
     "author": "Brandon Scott <brandongregoryscott@gmail.com>",
     "bin": {
-        "and-cli": "plugin-cli.js"
+        "plugin-cli": "plugin-cli.js"
     },
     "dependencies": {
         "and-cli": "file:///~/acc/fork/AndcultureCode.Cli",
