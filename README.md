@@ -20,42 +20,20 @@ A sample project setup showcasing the ability to extend the base functionality o
 
 In order to run this demo locally, you will need to:
 
-1. Clone my fork of the [`and-cli`](https://github.com/brandongregoryscott/AndcultureCode.Cli), switch to the feature branch, and install dependencies
-
-```SH
-git clone https://github.com/brandongregoryscott/AndcultureCode.Cli brandongregoryscott-AndcultureCode.Cli
-cd brandongregoryscott-AndcultureCode.Cli
-git checkout feature/project-specific-plugin-model-2
-npm install
-```
-
-2. Clone this repository
+1. Clone this repository
 
 ```SH
 git clone https://github.com/brandongregoryscott/and-cli-plugin-example
 ```
 
-3. Update the package.json in this cloned repository to reference the local version of the [`and-cli`](https://github.com/brandongregoryscott/AndcultureCode.Cli) and link the package
-
-```JSON
-"dependencies": {
-        "and-cli": "file://<location of brandongregoryscott-AndcultureCode.Cli>",
-        "commander": "6.0.0",
-        "shelljs": "0.8.4"
-    },
-```
+2. Install dependencies
 
 ```SH
-npm link <location brandongregoryscott-AndcultureCode.Cli>
-```
-
-4. Install dependencies
-
-```SH
+cd and-cli-plugin-example
 npm install
 ```
 
-5. Run the plugin cli
+3. Run the plugin cli
 
 ```SH
 $ ./plugin-cli.js
