@@ -17,6 +17,8 @@
     "name": "and-cli-plugin-example",
     "private": true,
     "scripts": {
+        "configure:git": "echo Ensuring git hooksPath is set to .githooks directory; git config core.hooksPath .githooks; chmod +x .githooks/*",
+        "preinstall": "npm run configure:git",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "version": "0.0.1"
