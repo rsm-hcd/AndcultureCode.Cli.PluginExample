@@ -1,4 +1,6 @@
-# and-cli-plugin-example
+# AndcultureCode.Cli.PluginExample
+
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A sample project setup showcasing the ability to extend the base functionality of the [`and-cli`](https://github.com/andculturecode/AndcultureCode.Cli) package for project-specific needs.
 
@@ -18,18 +20,20 @@ A sample project setup showcasing the ability to extend the base functionality o
 
 ## Getting started
 
+_The plugin feature is available from [v1.2.0](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v1.2.0) and later._
+
 In order to run this demo locally, you will need to:
 
 1. Clone this repository
 
 ```SH
-git clone https://github.com/brandongregoryscott/and-cli-plugin-example
+git clone https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample
 ```
 
 2. Install dependencies
 
 ```SH
-cd and-cli-plugin-example
+cd AndcultureCode.Cli.PluginExample
 npm install
 ```
 
@@ -264,9 +268,9 @@ npm install -g .
 You can then change to another directory and run it directly by the bin name (defined in package.json):
 
 ```JSON
-    "bin": {
-        "plugin-cli": "plugin-cli.js"
-    },
+"bin": {
+    "plugin-cli": "plugin-cli.js"
+},
 ```
 
 ```SH
