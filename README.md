@@ -207,7 +207,7 @@ Commands:
 
 ## Notes / limitations
 
--   Adding an option to an existing base command
+#### Adding an option to an existing base command
 
 As of right now, consumers are unable to add additional options/flags to a base command that is exported from the [`and-cli`](https://github.com/andculturecode/AndcultureCode.Cli). I think that would require some way to run a 'pre-parse' hook to tack on additional options before parsing arguments and running the command body, or possibly a larger refactor of the way we are registering commands in the base CLI. There is a [documented issue](https://github.com/tj/commander.js/issues/1197) (that is still being updated/vetted) on the [`commander.js`](https://github.com/tj/commander.js) repo for discussion around pre/post hooks.
 
@@ -215,7 +215,7 @@ If the proposed option makes sense to live in the base CLI, open up an issue in 
 
 Otherwise, the only workaround is to add a new command. Post-fixing the command to denote it is the custom to this project/extended cli might be a good idea (such as `dotnet-local` or `dotnet-ext`).
 
--   Overriding a base command
+#### Overriding a base command
 
 To override a base command with one that you've implemented yourself, each `register*Command` function has an `overrideIfRegistered` flag that needs to be set to `true`. This will ensure that you are intentionally attempting to replace the command(s) that have already been registered.
 
@@ -255,23 +255,33 @@ commandRegistry.registerCommand(
 );
 ```
 
--   Running without being in the current project directory (aliasing/global installation)
+#### Running without being in the current project directory (aliasing/global installation)
 
 Currently, the `and-cli install` command is hard-coded to create an alias for `and-cli` only, so a project extending its behavior will not benefit from this command. As adoption of the `and-cli` increases, an update to that command to dynamically determine the CLI/bin name would be nice. A current workaround is to install your CLI globally.
 
-1. Install your custom CLI as a global package, ie:
-
-```SH
-npm install -g .
-```
-
-You can then change to another directory and run it directly by the bin name (defined in package.json):
+1. Add/update the bin name for your entrypoint file in `package.json`
 
 ```JSON
 "bin": {
     "plugin-cli": "plugin-cli.js"
 },
 ```
+
+_Note: While not required for the executable to run, it is probably a good idea to ensure the bin name is the same as your package name, ie:_
+```JSON
+"name": "plugin-cli",
+```
+
+This will allow you to easily identify your globally installed CLI.
+
+2. Install your custom CLI as a global package, ie:
+
+```SH
+npm install -g .
+```
+
+3. You can then change to another directory and run it directly by the bin name.
+
 
 ```SH
 cd ~/some/other/directory

@@ -14,7 +14,7 @@
     },
     "license": "Apache-2.0",
     "main": "plugin-cli.js",
-    "name": "and-cli-plugin-example",
+    "name": "plugin-cli",
     "private": true,
     "scripts": {
         "configure:git": "echo Ensuring git hooksPath is set to .githooks directory; git config core.hooksPath .githooks; chmod +x .githooks/*",
