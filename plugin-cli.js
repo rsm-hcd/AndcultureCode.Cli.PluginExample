@@ -58,9 +58,12 @@ commandRegistry
     });
 
 // Aliases can be registered from the package.json as well - see the 'and-cli' section for the aliased
-// example command. Both this function and registerAlias() have an 'overrideIfTrue' parameter to opt-in to overwriting
-// of a registered command of the same name, if desired.
+// example command.
 commandRegistry.registerAliasesFromConfig();
+
+// Both this function and registerAlias() have an 'overrideIfTrue' parameter to opt-in to overwriting
+// of a registered command of the same name, if desired.
+commandRegistry.registerAliasesFromConfig(true);
 
 // Note - in order to preprocess the command line args, you must call commandRegistry.parseWithAliases()
 // instead of just program.parse()! Without calling this, the command string will be interpreted literally
