@@ -48,6 +48,11 @@ $ ./plugin-cli.js
 
 #### Importing the base CLI and registering all of the base commands (`copy`, `dotnet`, `dotnet-test`, etc...)
 
+<details>
+<summary>
+Click to see code sample
+</summary>
+
 ```JS
 #!/usr/bin/env node
 
@@ -71,6 +76,13 @@ program.parse(process.argv);
 
 // #endregion Entrypoint
 ```
+
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
 
 ```SH
 $ ./plugin-cli.js
@@ -99,7 +111,14 @@ Commands:
   help [command]  display help for command
 ```
 
+</details>
+
 #### Importing the base CLI and registering just one base command
+
+<details>
+<summary>
+Click to see code sample
+</summary>
 
 ```JS
 #!/usr/bin/env node
@@ -125,6 +144,13 @@ program.parse(process.argv);
 // #endregion Entrypoint
 ```
 
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
+
 ```SH
 $ ./plugin-cli.js
 ```
@@ -143,7 +169,14 @@ Commands:
   help [command]  display help for command
 ```
 
+</details>
+
 #### Importing the base CLI, registering all of the base commands, adding a custom command
+
+<details>
+<summary>
+Click to see code sample
+</summary>
 
 ```JS
 #!/usr/bin/env node
@@ -178,6 +211,13 @@ program.parse(process.argv);
 // #endregion Entrypoint
 ```
 
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
+
 ```SH
 $ ./plugin-cli.js
 ```
@@ -206,7 +246,14 @@ Commands:
   help [command]  display help for command
 ```
 
+</details>
+
 #### Importing the base CLI, registering all of the base commands, adding aliases through the command registry
+
+<details>
+<summary>
+Click to see code sample
+</summary>
 
 ```JS
 #!/usr/bin/env node
@@ -247,6 +294,13 @@ commandRegistry.parseWithAliases();
 
 `d` will be displayed in the help menu and map to the `dotnet` command when run, while `dcRb` maps to `dotnet -cRb`.
 
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
+
 ```SH
 $ ./plugin-cli.js
 ```
@@ -277,7 +331,14 @@ Commands:
   help [command]  display help for command
 ```
 
+</details>
+
 #### Importing the base CLI, registering a custom command, adding an alias through the package.json
+
+<details>
+<summary>
+Click to see code sample
+</summary>
 
 ```JS
 #!/usr/bin/env node
@@ -326,6 +387,13 @@ The package.json would have entries in it like this:
 
 `ex` will be displayed in the help menu and map to the `example` command when run.
 
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
+
 ```SH
 $ ./plugin-cli.js
 ```
@@ -344,6 +412,8 @@ Commands:
   example         Some example command
   help [command]  display help for command
 ```
+
+</details>
 
 ## Notes / limitations
 
