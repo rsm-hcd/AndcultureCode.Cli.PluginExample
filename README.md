@@ -206,7 +206,7 @@ Commands:
   help [command]  display help for command
 ```
 
-#### Importing the base CLI, registering a base command, adding aliases through the command registry
+#### Importing the base CLI, registering all of the base commands, adding aliases through the command registry
 
 ```JS
 #!/usr/bin/env node
@@ -340,18 +340,8 @@ Options:
   -h, --help      display help for command
 
 Commands:
-  copy            Copy files and/or directories
-  deploy          Deploy various application types
-  dotnet          Some custom version of the dotnet command
-  dotnet-test     Run various dotnet test runner commands for the project
   ex              (alias) example
   example         Some example command
-  github          Commands for interacting with AndcultureCode github resources
-  install         Collection of commands related to installation and configuration of the and-cli
-  migration       Run commands to manage Entity Framework migrations
-  nuget           Manages publishing of nuget dotnet core projects
-  webpack         Run various webpack commands for the project
-  webpack-test    Run various webpack test commands for the project
   help [command]  display help for command
 ```
 
