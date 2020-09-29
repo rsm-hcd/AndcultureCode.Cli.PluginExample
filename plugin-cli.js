@@ -45,6 +45,29 @@ commandRegistry.registerCommands([
     },
 ]);
 
-program.parse(process.argv);
+// Aliases can be registered to provide an easier way to type or remember a command and/or option(s)
+// The 'command' is the alias, and the 'description' is the command and option(s) that it should be mapped to.
+commandRegistry
+    .registerAlias({
+        command: "d",
+        description: "dotnet",
+    })
+    .registerAlias({
+        command: "dcRb",
+        description: "dotnet -cRb",
+    });
+
+// Aliases can be registered from the package.json as well - see the 'and-cli' section for the aliased
+// example command.
+commandRegistry.registerAliasesFromConfig();
+
+// Both this function and registerAlias() have an 'overrideIfTrue' parameter to opt-in to overwriting
+// of a registered command of the same name, if desired.
+commandRegistry.registerAliasesFromConfig(true);
+
+// Note - in order to preprocess the command line args, you must call commandRegistry.parseWithAliases()
+// instead of just program.parse()! Without calling this, the command string will be interpreted literally
+// and will likely fall through to the 'unknown command' error.
+commandRegistry.parseWithAliases();
 
 // #endregion Entrypoint

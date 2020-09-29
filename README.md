@@ -21,6 +21,7 @@ A sample project setup showcasing the ability to extend the base functionality o
 ## Getting started
 
 _The plugin feature is available from [v1.2.0](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v1.2.0) and later._
+_The alias feature is available from [v1.3.1](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v1.3.1) and later._
 
 In order to run this demo locally, you will need to:
 
@@ -47,163 +48,352 @@ $ ./plugin-cli.js
 
 #### Importing the base CLI and registering all of the base commands (`copy`, `dotnet`, `dotnet-test`, etc...)
 
+<details>
+<summary>
+Click to see code sample
+</summary>
+
 ```JS
-#!/usr/bin/env node
+    #!/usr/bin/env node
 
-// -----------------------------------------------------------------------------------------
-// #region Imports
-// -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // #region Imports
+    // -----------------------------------------------------------------------------------------
 
-const commandRegistry = require("and-cli/modules/command-registry");
-const program = require("and-cli");
+    const commandRegistry = require("and-cli/modules/command-registry");
+    const program = require("and-cli");
 
-// #endregion Imports
+    // #endregion Imports
 
-// -----------------------------------------------------------------------------------------
-// #region Entrypoint
-// -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // #region Entrypoint
+    // -----------------------------------------------------------------------------------------
 
-// Register all of the base commands from the and-cli with this application
-commandRegistry.registerBaseCommands();
+    // Register all of the base commands from the and-cli with this application
+    commandRegistry.registerBaseCommands();
 
-program.parse(process.argv);
+    program.parse(process.argv);
 
-// #endregion Entrypoint
+    // #endregion Entrypoint
 ```
+
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
 
 ```SH
-$ ./plugin-cli.js
+    Usage: plugin-cli [options] [command]
+
+    andculture cli
+
+    Options:
+      -V, --version   output the version number
+      -h, --help      display help for command
+
+    Commands:
+      copy            Copy files and/or directories
+      deploy          Deploy various application types
+      dotnet          Run various dotnet commands for the project
+      dotnet-test     Run various dotnet test runner commands for the project
+      github          Commands for interacting with AndcultureCode github resources
+      install         Collection of commands related to installation and configuration of the and-cli
+      migration       Run commands to manage Entity Framework migrations
+      nuget           Manages publishing of nuget dotnet core projects
+      webpack         Run various webpack commands for the project
+      webpack-test    Run various webpack test commands for the project
+      help [command]  display help for command
 ```
 
-```SH
-Usage: plugin-cli [options] [command]
-
-andculture cli
-
-Options:
-  -V, --version   output the version number
-  -h, --help      display help for command
-
-Commands:
-  copy            Copy files and/or directories
-  deploy          Deploy various application types
-  dotnet          Run various dotnet commands for the project
-  dotnet-test     Run various dotnet test runner commands for the project
-  github          Commands for interacting with AndcultureCode github resources
-  install         Collection of commands related to installation and configuration of the and-cli
-  migration       Run commands to manage Entity Framework migrations
-  nuget           Manages publishing of nuget dotnet core projects
-  webpack         Run various webpack commands for the project
-  webpack-test    Run various webpack test commands for the project
-  help [command]  display help for command
-```
+</details>
 
 #### Importing the base CLI and registering just one base command
 
+<details>
+<summary>
+Click to see code sample
+</summary>
+
 ```JS
-#!/usr/bin/env node
+    #!/usr/bin/env node
 
-// -----------------------------------------------------------------------------------------
-// #region Imports
-// -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // #region Imports
+    // -----------------------------------------------------------------------------------------
 
-const commandRegistry = require("and-cli/modules/command-registry");
-const program = require("and-cli");
+    const commandRegistry = require("and-cli/modules/command-registry");
+    const program = require("and-cli");
 
-// #endregion Imports
+    // #endregion Imports
 
-// -----------------------------------------------------------------------------------------
-// #region Entrypoint
-// -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // #region Entrypoint
+    // -----------------------------------------------------------------------------------------
 
-// Register a single base command from the and-cli with this application
-commandRegistry.registerBaseCommand("dotnet");
+    // Register a single base command from the and-cli with this application
+    commandRegistry.registerBaseCommand("dotnet");
 
-program.parse(process.argv);
+    program.parse(process.argv);
 
-// #endregion Entrypoint
+    // #endregion Entrypoint
 ```
+
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
 
 ```SH
-$ ./plugin-cli.js
+    Usage: plugin-cli [options] [command]
+
+    andculture cli
+
+    Options:
+      -V, --version   output the version number
+      -h, --help      display help for command
+
+    Commands:
+      dotnet          Run various dotnet commands for the project
+      help [command]  display help for command
 ```
 
-```SH
-Usage: plugin-cli [options] [command]
-
-andculture cli
-
-Options:
-  -V, --version   output the version number
-  -h, --help      display help for command
-
-Commands:
-  dotnet          Run various dotnet commands for the project
-  help [command]  display help for command
-```
+</details>
 
 #### Importing the base CLI, registering all of the base commands, adding a custom command
 
+<details>
+<summary>
+Click to see code sample
+</summary>
+
 ```JS
-#!/usr/bin/env node
+    #!/usr/bin/env node
 
-// -----------------------------------------------------------------------------------------
-// #region Imports
-// -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // #region Imports
+    // -----------------------------------------------------------------------------------------
 
-const commandRegistry = require("and-cli/modules/command-registry");
-const program = require("and-cli");
+    const commandRegistry = require("and-cli/modules/command-registry");
+    const program = require("and-cli");
 
-// #endregion Imports
+    // #endregion Imports
 
-// -----------------------------------------------------------------------------------------
-// #region Entrypoint
-// -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // #region Entrypoint
+    // -----------------------------------------------------------------------------------------
 
-// Register all of the base commands from the and-cli with this application
-commandRegistry.registerBaseCommands();
+    // Register all of the base commands from the and-cli with this application
+    commandRegistry.registerBaseCommands();
 
-// Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
-// ie, this command maps up to `plugin-cli-example.js`
-commandRegistry.registerCommand(
-    {
-        command: "example",
-        description: "Some example command",
-    },
-);
+    // Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
+    // ie, this command maps up to `plugin-cli-example.js`
+    commandRegistry.registerCommand(
+        {
+            command: "example",
+            description: "Some example command",
+        },
+    );
 
-program.parse(process.argv);
+    program.parse(process.argv);
 
-// #endregion Entrypoint
+    // #endregion Entrypoint
 ```
+
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
 
 ```SH
-$ ./plugin-cli.js
+    Usage: plugin-cli [options] [command]
+
+    andculture cli
+
+    Options:
+      -V, --version   output the version number
+      -h, --help      display help for command
+
+    Commands:
+      copy            Copy files and/or directories
+      deploy          Deploy various application types
+      dotnet          Run various dotnet commands for the project
+      dotnet-test     Run various dotnet test runner commands for the project
+      example         Some example command
+      github          Commands for interacting with AndcultureCode github resources
+      install         Collection of commands related to installation and configuration of the and-cli
+      migration       Run commands to manage Entity Framework migrations
+      nuget           Manages publishing of nuget dotnet core projects
+      webpack         Run various webpack commands for the project
+      webpack-test    Run various webpack test commands for the project
+      help [command]  display help for command
 ```
+
+</details>
+
+#### Importing the base CLI, registering all of the base commands, adding aliases through the command registry
+
+<details>
+<summary>
+Click to see code sample
+</summary>
+
+```JS
+    #!/usr/bin/env node
+
+    // -----------------------------------------------------------------------------------------
+    // #region Imports
+    // -----------------------------------------------------------------------------------------
+
+    const commandRegistry = require("and-cli/modules/command-registry");
+    const program = require("and-cli");
+
+    // #endregion Imports
+
+    // -----------------------------------------------------------------------------------------
+    // #region Entrypoint
+    // -----------------------------------------------------------------------------------------
+
+    // Register all of the base commands from the and-cli with this application
+    commandRegistry.registerBaseCommands();
+
+    // Register an alias for the dotnet command and the dotnet command with specific options
+    commandRegistry
+        .registerAlias({
+            command: "d",
+            description: "dotnet",
+        })
+        .registerAlias({
+            command: "dcRb",
+            description: "dotnet -cRb",
+        });
+
+    // Call commandRegistry.parseWithAliases() instead of program.parse() to ensure aliases are handled
+    // before attempting to parse regular commands.
+    commandRegistry.parseWithAliases();
+
+    // #endregion Entrypoint
+```
+
+`d` will be displayed in the help menu and map to the `dotnet` command when run, while `dcRb` maps to `dotnet -cRb`.
+
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
 
 ```SH
-Usage: plugin-cli [options] [command]
+    Usage: plugin-cli [options] [command]
 
-andculture cli
+    Sandbox project to showcase extending functionality of and-cli
 
-Options:
-  -V, --version   output the version number
-  -h, --help      display help for command
+    Options:
+      -V, --version   output the version number
+      -h, --help      display help for command
 
-Commands:
-  copy            Copy files and/or directories
-  deploy          Deploy various application types
-  dotnet          Run various dotnet commands for the project
-  dotnet-test     Run various dotnet test runner commands for the project
-  example         Some example command
-  github          Commands for interacting with AndcultureCode github resources
-  install         Collection of commands related to installation and configuration of the and-cli
-  migration       Run commands to manage Entity Framework migrations
-  nuget           Manages publishing of nuget dotnet core projects
-  webpack         Run various webpack commands for the project
-  webpack-test    Run various webpack test commands for the project
-  help [command]  display help for command
+    Commands:
+      copy            Copy files and/or directories
+      d               (alias) dotnet
+      dcRb            (alias) dotnet -cRb
+      deploy          Deploy various application types
+      dotnet          Some custom version of the dotnet command
+      dotnet-test     Run various dotnet test runner commands for the project
+      example         Some example command
+      github          Commands for interacting with AndcultureCode github resources
+      install         Collection of commands related to installation and configuration of the and-cli
+      migration       Run commands to manage Entity Framework migrations
+      nuget           Manages publishing of nuget dotnet core projects
+      webpack         Run various webpack commands for the project
+      webpack-test    Run various webpack test commands for the project
+      help [command]  display help for command
 ```
+
+</details>
+
+#### Importing the base CLI, registering a custom command, adding an alias through the package.json
+
+<details>
+<summary>
+Click to see code sample
+</summary>
+
+```JS
+    #!/usr/bin/env node
+
+    // -----------------------------------------------------------------------------------------
+    // #region Imports
+    // -----------------------------------------------------------------------------------------
+
+    const commandRegistry = require("and-cli/modules/command-registry");
+    const program = require("and-cli");
+
+    // #endregion Imports
+
+    // -----------------------------------------------------------------------------------------
+    // #region Entrypoint
+    // -----------------------------------------------------------------------------------------
+
+    // Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
+    // ie, this command maps up to `plugin-cli-example.js`
+    commandRegistry.registerCommand(
+        {
+            command: "example",
+            description: "Some example command",
+        },
+    );
+
+    // Aliases will be loaded from the local package.json file under an 'and-cli' > 'aliases' section.
+    commandRegistry.registerAliasesFromConfig();
+
+    // Call commandRegistry.parseWithAliases() instead of program.parse() to ensure aliases are handled
+    // before attempting to parse regular commands.
+    commandRegistry.parseWithAliases();
+
+    // #endregion Entrypoint
+```
+
+The package.json would have entries in it like this:
+
+```JSON
+"and-cli": {
+    "aliases": {
+        "ex": "example"
+    }
+},
+```
+
+`ex` will be displayed in the help menu and map to the `example` command when run.
+
+</details>
+
+<details>
+<summary>
+Click to see CLI output
+</summary>
+
+```SH
+    Usage: plugin-cli [options] [command]
+
+    Sandbox project to showcase extending functionality of and-cli
+
+    Options:
+      -V, --version   output the version number
+      -h, --help      display help for command
+
+    Commands:
+      ex              (alias) example
+      example         Some example command
+      help [command]  display help for command
+```
+
+</details>
 
 ## Notes / limitations
 
@@ -268,6 +458,7 @@ Currently, the `and-cli install` command is hard-coded to create an alias for `a
 ```
 
 _Note: While not required for the executable to run, it is probably a good idea to ensure the bin name is the same as your package name, ie:_
+
 ```JSON
 "name": "plugin-cli",
 ```
@@ -281,7 +472,6 @@ npm install -g .
 ```
 
 3. You can then change to another directory and run it directly by the bin name.
-
 
 ```SH
 cd ~/some/other/directory
