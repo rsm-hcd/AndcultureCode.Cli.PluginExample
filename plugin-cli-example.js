@@ -4,7 +4,7 @@
 // #region Imports
 // -----------------------------------------------------------------------------------------
 
-const { program, CommandRunner } = require("and-cli");
+const { program, CommandRunner, Js } = require("and-cli");
 
 // #endregion Imports
 
@@ -19,7 +19,7 @@ CommandRunner.run(async () => {
         .parse(process.argv);
 
     // If no options are passed in, just output help
-    if (process.argv.slice(2).length === 0) {
+    if (Js.hasNoArguments()) {
         program.outputHelp();
     }
 
