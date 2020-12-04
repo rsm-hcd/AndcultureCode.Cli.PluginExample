@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-require("and-cli/command-runner").run(async () => {
-    // -----------------------------------------------------------------------------------------
-    // #region Imports
-    // -----------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------
+// #region Imports
+// -----------------------------------------------------------------------------------------
 
-    const program = require("and-cli");
+const { program, CommandRunner, Js } = require("and-cli");
 
-    // #endregion Imports
+// #endregion Imports
 
+CommandRunner.run(async () => {
     // -----------------------------------------------------------------------------------------
     // #region Entrypoint
     // -----------------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ require("and-cli/command-runner").run(async () => {
         .parse(process.argv);
 
     // If no options are passed in, just output help
-    if (process.argv.slice(2).length === 0) {
+    if (Js.hasNoArguments()) {
         program.outputHelp();
     }
 

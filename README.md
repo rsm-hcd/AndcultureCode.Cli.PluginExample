@@ -22,6 +22,7 @@ A sample project setup showcasing the ability to extend the base functionality o
 
 _The plugin feature is available from [v1.2.0](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v1.2.0) and later._
 _The alias feature is available from [v1.3.1](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v1.3.1) and later._
+_Prior to [v2.0.0](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v2.0.0) modules were lowercase-first and "default" imports. Check the git history for examples if still using versions < v2.0.0._
 
 In order to run this demo locally, you will need to:
 
@@ -60,8 +61,7 @@ Click to see code sample
     // #region Imports
     // -----------------------------------------------------------------------------------------
 
-    const commandRegistry = require("and-cli/modules/command-registry");
-    const program = require("and-cli");
+    const { CommandRegistry, program } = require("and-cli");
 
     // #endregion Imports
 
@@ -70,7 +70,7 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register all of the base commands from the and-cli with this application
-    commandRegistry.registerBaseCommands();
+    CommandRegistry.registerBaseCommands();
 
     program.parse(process.argv);
 
@@ -123,8 +123,7 @@ Click to see code sample
     // #region Imports
     // -----------------------------------------------------------------------------------------
 
-    const commandRegistry = require("and-cli/modules/command-registry");
-    const program = require("and-cli");
+    const { CommandRegistry, program } = require("and-cli");
 
     // #endregion Imports
 
@@ -133,7 +132,7 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register a single base command from the and-cli with this application
-    commandRegistry.registerBaseCommand("dotnet");
+    CommandRegistry.registerBaseCommand("dotnet");
 
     program.parse(process.argv);
 
@@ -177,8 +176,7 @@ Click to see code sample
     // #region Imports
     // -----------------------------------------------------------------------------------------
 
-    const commandRegistry = require("and-cli/modules/command-registry");
-    const program = require("and-cli");
+    const { CommandRegistry, program } = require("and-cli");
 
     // #endregion Imports
 
@@ -187,11 +185,11 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register all of the base commands from the and-cli with this application
-    commandRegistry.registerBaseCommands();
+    CommandRegistry.registerBaseCommands();
 
     // Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
     // ie, this command maps up to `plugin-cli-example.js`
-    commandRegistry.registerCommand(
+    CommandRegistry.registerCommand(
         {
             command: "example",
             description: "Some example command",
@@ -250,8 +248,7 @@ Click to see code sample
     // #region Imports
     // -----------------------------------------------------------------------------------------
 
-    const commandRegistry = require("and-cli/modules/command-registry");
-    const program = require("and-cli");
+    const { CommandRegistry, program } = require("and-cli");
 
     // #endregion Imports
 
@@ -260,10 +257,10 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register all of the base commands from the and-cli with this application
-    commandRegistry.registerBaseCommands();
+    CommandRegistry.registerBaseCommands();
 
     // Register an alias for the dotnet command and the dotnet command with specific options
-    commandRegistry
+    CommandRegistry
         .registerAlias({
             command: "d",
             description: "dotnet",
@@ -273,9 +270,9 @@ Click to see code sample
             description: "dotnet -cRb",
         });
 
-    // Call commandRegistry.parseWithAliases() instead of program.parse() to ensure aliases are handled
+    // Call CommandRegistry.parseWithAliases() instead of program.parse() to ensure aliases are handled
     // before attempting to parse regular commands.
-    commandRegistry.parseWithAliases();
+    CommandRegistry.parseWithAliases();
 
     // #endregion Entrypoint
 ```
@@ -331,8 +328,7 @@ Click to see code sample
     // #region Imports
     // -----------------------------------------------------------------------------------------
 
-    const commandRegistry = require("and-cli/modules/command-registry");
-    const program = require("and-cli");
+    const { CommandRegistry, program } = require("and-cli");
 
     // #endregion Imports
 
@@ -342,7 +338,7 @@ Click to see code sample
 
     // Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
     // ie, this command maps up to `plugin-cli-example.js`
-    commandRegistry.registerCommand(
+    CommandRegistry.registerCommand(
         {
             command: "example",
             description: "Some example command",
@@ -350,11 +346,11 @@ Click to see code sample
     );
 
     // Aliases will be loaded from the local package.json file under an 'and-cli' > 'aliases' section.
-    commandRegistry.registerAliasesFromConfig();
+    CommandRegistry.registerAliasesFromConfig();
 
-    // Call commandRegistry.parseWithAliases() instead of program.parse() to ensure aliases are handled
+    // Call CommandRegistry.parseWithAliases() instead of program.parse() to ensure aliases are handled
     // before attempting to parse regular commands.
-    commandRegistry.parseWithAliases();
+    CommandRegistry.parseWithAliases();
 
     // #endregion Entrypoint
 ```
@@ -413,10 +409,10 @@ To override a base command with one that you've implemented yourself, each `regi
 // ... imports, entrypoint, etc.
 
 // Register a single base command from the and-cli with this application
-commandRegistry.registerBaseCommand("dotnet");
+CommandRegistry.registerBaseCommand("dotnet");
 
 // Override the 'dotnet' command from and-cli with our own custom version
-commandRegistry.registerCommand(
+CommandRegistry.registerCommand(
     {
         command: "dotnet",
         description: "Some custom version of the dotnet command",
@@ -431,13 +427,13 @@ Under the hood, this is just checking to see if a command of the same name has a
 // ... imports, entrypoint, etc.
 
 // Register all of the base commands from the and-cli with this application
-commandRegistry.registerBaseCommands();
+CommandRegistry.registerBaseCommands();
 
 // Remove just the base 'dotnet' command
-commandRegistry.removeCommand("dotnet");
+CommandRegistry.removeCommand("dotnet");
 
 // Add our custom version of the 'dotnet' command now that there's no name conflict
-commandRegistry.registerCommand(
+CommandRegistry.registerCommand(
     {
         command: "dotnet",
         description: "Some custom version of the dotnet command",
@@ -447,7 +443,7 @@ commandRegistry.registerCommand(
 
 #### Running without being in the current project directory (aliasing/global installation)
 
-Currently, the `and-cli install` command is hard-coded to create an alias for `and-cli` only, so a project extending its behavior will not benefit from this command. As adoption of the `and-cli` increases, an update to that command to dynamically determine the CLI/bin name would be nice. A current workaround is to install your CLI globally.
+As of [v1.5.0](https://github.com/AndcultureCode/AndcultureCode.Cli/releases/tag/v1.5.0), your CLI project can be installed globally using the same `install` command that the base `and-cli` provides.
 
 1. Add/update the bin name for your entrypoint file in `package.json`
 
@@ -465,10 +461,10 @@ _Note: While not required for the executable to run, it is probably a good idea 
 
 This will allow you to easily identify your globally installed CLI.
 
-2. Install your custom CLI as a global package, ie:
+2. Run the `install` command. Ensure you've properly registered at least the base `install` command in your project.
 
 ```SH
-npm install -g .
+./plugin-cli.js install
 ```
 
 3. You can then change to another directory and run it directly by the bin name.
@@ -478,6 +474,6 @@ cd ~/some/other/directory
 plugin-cli dotnet -cRb
 ```
 
-# Community 
+# Community
 
 [![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/0)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/0)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/1)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/1)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/2)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/2)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/3)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/3)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/4)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/4)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/5)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/5)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/6)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/6)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/images/7)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli.PluginExample/links/7)
