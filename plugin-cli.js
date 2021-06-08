@@ -5,7 +5,7 @@
 // -----------------------------------------------------------------------------------------
 
 
-const { program, Commands, CommandRegistry } = require("and-cli");
+const { program, CommandDefinitions, CommandRegistry } = require("and-cli");
 
 // #endregion Imports
 
@@ -25,7 +25,7 @@ CommandRegistry.registerAllBase();
 CommandRegistry.registerBase("dotnet", true);
 
 // Or, strongly typed with the command definitions
-CommandRegistry.registerBase(Commands.dotnet.command, true);
+CommandRegistry.registerBase(CommandDefinitions.dotnet.command, true);
 
 // Override the 'dotnet' command from and-cli with our own custom version
 CommandRegistry.register(
