@@ -3,6 +3,7 @@
 ![build status](https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/actions/workflows/main.yml/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A sample project setup showcasing the ability to extend the base functionality of the [`and-cli`](https://github.com/andculturecode/AndcultureCode.Cli) package for project-specific needs.
@@ -73,7 +74,7 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register all of the base commands from the and-cli with this application
-    CommandRegistry.registerBaseCommands();
+    CommandRegistry.registerAllBase();
 
     program.parse(process.argv);
 
@@ -135,7 +136,7 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register a single base command from the and-cli with this application
-    CommandRegistry.registerBaseCommand("dotnet");
+    CommandRegistry.registerBase("dotnet");
 
     program.parse(process.argv);
 
@@ -188,11 +189,11 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register all of the base commands from the and-cli with this application
-    CommandRegistry.registerBaseCommands();
+    CommandRegistry.registerAllBase();
 
     // Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
     // ie, this command maps up to `plugin-cli-example.js`
-    CommandRegistry.registerCommand(
+    CommandRegistry.register(
         {
             command: "example",
             description: "Some example command",
@@ -260,7 +261,7 @@ Click to see code sample
     // -----------------------------------------------------------------------------------------
 
     // Register all of the base commands from the and-cli with this application
-    CommandRegistry.registerBaseCommands();
+    CommandRegistry.registerAllBase();
 
     // Register an alias for the dotnet command and the dotnet command with specific options
     CommandRegistry
@@ -341,7 +342,7 @@ Click to see code sample
 
     // Register a custom command in the current project (filename must match <cli-name>-<command-name>.js)
     // ie, this command maps up to `plugin-cli-example.js`
-    CommandRegistry.registerCommand(
+    CommandRegistry.register(
         {
             command: "example",
             description: "Some example command",
@@ -412,10 +413,10 @@ To override a base command with one that you've implemented yourself, each `regi
 // ... imports, entrypoint, etc.
 
 // Register a single base command from the and-cli with this application
-CommandRegistry.registerBaseCommand("dotnet");
+CommandRegistry.registerBase("dotnet");
 
 // Override the 'dotnet' command from and-cli with our own custom version
-CommandRegistry.registerCommand(
+CommandRegistry.register(
     {
         command: "dotnet",
         description: "Some custom version of the dotnet command",
@@ -430,13 +431,13 @@ Under the hood, this is just checking to see if a command of the same name has a
 // ... imports, entrypoint, etc.
 
 // Register all of the base commands from the and-cli with this application
-CommandRegistry.registerBaseCommands();
+CommandRegistry.registerAllBase();
 
 // Remove just the base 'dotnet' command
 CommandRegistry.removeCommand("dotnet");
 
 // Add our custom version of the 'dotnet' command now that there's no name conflict
-CommandRegistry.registerCommand(
+CommandRegistry.register(
     {
         command: "dotnet",
         description: "Some custom version of the dotnet command",
