@@ -20,8 +20,9 @@ CommandRunner.run(async () => {
         .option(dotnetVersion.getOptions().toString(), dotnetVersion.description())
         .parse(process.argv);
 
-    // If no options are passed in, just runs dotnet version module
-    if (Js.hasNoArguments()) {
+    const { sdkVersion } = program.opts();
+
+    if (Js.hasNoArguments() || sdkVersion) {
         dotnetVersion.run();
     }
 

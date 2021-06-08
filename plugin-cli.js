@@ -5,7 +5,7 @@
 // -----------------------------------------------------------------------------------------
 
 
-const { program, Commands, CommandRegistry } = require("and-cli");
+const { program, CommandDefinitions, CommandRegistry } = require("and-cli");
 
 // #endregion Imports
 
@@ -19,16 +19,16 @@ program.description(
 );
 
 // Register all of the base commands from the and-cli with this application
-CommandRegistry.registerBaseCommands();
+CommandRegistry.registerAllBase();
 
 // Register a single base command from the and-cli with this application
-CommandRegistry.registerBaseCommand("dotnet", true);
+CommandRegistry.registerBase("dotnet", true);
 
 // Or, strongly typed with the command definitions
-CommandRegistry.registerBaseCommand(Commands.dotnet.command, true);
+CommandRegistry.registerBase(CommandDefinitions.dotnet.command, true);
 
 // Override the 'dotnet' command from and-cli with our own custom version
-CommandRegistry.registerCommand(
+CommandRegistry.register(
     {
         command: "dotnet",
         description: "Some custom version of the dotnet command",
@@ -37,7 +37,7 @@ CommandRegistry.registerCommand(
 );
 
 // The command registry also provides a function for registering multiple commands at once
-CommandRegistry.registerCommands([
+CommandRegistry.registerAll([
     {
         command: "example",
         description: "Some example command",

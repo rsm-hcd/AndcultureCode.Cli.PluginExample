@@ -20,7 +20,7 @@ const dotnetVersion = {
         return `Outputs information about the installed dotnet SDKs (via ${this.cmd()})`;
     },
     getOptions() {
-        return new OptionStringBuilder("version", "v");
+        return new OptionStringBuilder("sdk-version");
     },
     run() {
         const { cmd, args } = this.cmd();
