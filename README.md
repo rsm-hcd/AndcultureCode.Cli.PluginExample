@@ -2,7 +2,7 @@
 
 ![build status](https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/actions/workflows/main.yml/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A sample project setup showcasing the ability to extend the base functionality of the [`and-cli`](https://github.com/andculturecode/AndcultureCode.Cli) package for project-specific needs.
@@ -488,6 +488,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/brandongregoryscott"><img src="https://avatars.githubusercontent.com/u/11774799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brandon Scott</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/commits?author=brandongregoryscott" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/commits?author=brandongregoryscott" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jhugs"><img src="https://avatars.githubusercontent.com/u/14300627?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joshua Hughes</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/pulls?q=is%3Apr+reviewed-by%3Ajhugs" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://www.snsavage.com"><img src="https://avatars.githubusercontent.com/u/6299224?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Scott Savage</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/pulls?q=is%3Apr+reviewed-by%3Asnsavage" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
