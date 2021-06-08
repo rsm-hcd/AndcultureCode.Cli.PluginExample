@@ -14,6 +14,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "jhugs",
+      "name": "Joshua Hughes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14300627?v=4",
+      "profile": "https://github.com/jhugs",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
