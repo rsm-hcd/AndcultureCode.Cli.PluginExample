@@ -1,8 +1,11 @@
 # AndcultureCode.Cli.PluginExample
 
+![build status](https://github.com/AndcultureCode/AndcultureCode.Cli.PluginExample/actions/workflows/main.yml/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 A sample project setup showcasing the ability to extend the base functionality of the [`and-cli`](https://github.com/andculturecode/AndcultureCode.Cli) package for project-specific needs.
 
 ## Project structure
@@ -474,7 +477,6 @@ This will allow you to easily identify your globally installed CLI.
 cd ~/some/other/directory
 plugin-cli dotnet -cRb
 ```
-
 
 ## Contributors ✨
 
