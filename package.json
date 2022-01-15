@@ -11,7 +11,7 @@
     "dependencies": {
         "and-cli": "2.7.2",
         "commander": "6.0.0",
-        "shelljs": "0.8.4"
+        "shelljs": "0.8.5"
     },
     "description": "Sandbox project to showcase extending functionality of and-cli",
     "devDependencies": {
